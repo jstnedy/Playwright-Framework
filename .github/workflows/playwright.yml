@@ -1,4 +1,5 @@
 name: E2E / API Tests
+run-name: "${{ github.event.inputs.suite }}"
 
 on:
   workflow_dispatch:
