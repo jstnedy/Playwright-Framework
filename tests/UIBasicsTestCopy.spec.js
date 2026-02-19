@@ -23,7 +23,7 @@ for(const data of dataset){
     await dashboardPage.addItemToCart(data.productName);
     await dashboardPage.verifyItemAddedToCart(data.productName);
     await checkOutPage.checkOutItem();
-    await orderHistoryPage.orderHistoryVerificiation();
+    await orderHistoryPage.orderHistoryVerification();
   });
 }
 
