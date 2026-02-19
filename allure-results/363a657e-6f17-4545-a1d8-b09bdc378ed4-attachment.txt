@@ -1,0 +1,11 @@
+Registered Email: userwbo7jp3@gmail.com
+Registered Password: Es11k@wawa
+Logged in successfully with:
+Username:userwbo7jp3@gmail.com
+Password:Es11k@wawa
+Zara Coat 3 has been added to cart
+Zara Coat 3 is present in the cart
+Invalid coupon code message is displayed as expected.
+Coupon code entered correctly.
+Order Reference Number: 6994b8dd1fe6115f6a8ef12e
+Order reference numbers match: 6994b8dd1fe6115f6a8ef12e

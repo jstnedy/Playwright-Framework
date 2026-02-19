@@ -1,0 +1,10 @@
+Registered Email: userpdfbooo@gmail.com
+Registered Password: Es11k@wawa
+Logged in successfully with:
+Username:userpdfbooo@gmail.com
+Password:Es11k@wawa
+iphone 13 pro has been added to cart
+iphone 13 pro is present in the cart
+Invalid coupon code message is displayed as expected.
+Coupon code entered correctly.
+Order Reference Number: 6994bb101fe6115f6a8ef670

@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","3767","@Web Navigate to Pornhub","","2026-02-14","passed","2026-02-14","","NavigateToPornhub.spec.js","",""
+"","15312","@Web Page Playwright Test - Adidas Original","","2026-02-14","passed","2026-02-14","","UIBasicsTestCopy.spec.js","",""
+"","15489","@Web Page Playwright Test - Zara Coat 3","","2026-02-14","passed","2026-02-14","","UIBasicsTestCopy.spec.js","",""
+"","43684","@Web Page Playwright Tests using Fixture","","2026-02-14","passed","2026-02-14","","UIBasicsTestCopy.spec.js","",""
+"","1292","@Web Navigate to Google","","2026-02-14","passed","2026-02-14","","NavigateToGoogle.spec.js","",""
+"","15288","@Web Page Playwright Test - iphone 13 pro","","2026-02-14","passed","2026-02-14","","UIBasicsTestCopy.spec.js","",""

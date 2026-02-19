@@ -1,0 +1,67 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e7]: Ecom
+      - generic [ref=e9]:
+        - link " dummywebsite@rahulshettyacademy.com" [ref=e11] [cursor=pointer]:
+          - /url: emailto:dummywebsite@rahulshettyacademy.com
+          - generic [ref=e12]: 
+          - text: dummywebsite@rahulshettyacademy.com
+        - generic [ref=e13]:
+          - link "" [ref=e14] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e15]: 
+          - link "" [ref=e16] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e17]: 
+          - link "" [ref=e18] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e19]: 
+          - link "" [ref=e20] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e21]: 
+  - generic [ref=e22]:
+    - generic [ref=e23]:
+      - heading "We Make Your Shopping Simple" [level=3]
+      - heading "Practice Website for Rahul Shetty Academy Students" [level=1] [ref=e24]:
+        - text: Practice Website for
+        - emphasis [ref=e25]: Rahul Shetty Academy
+        - text: Students
+      - link "Register" [ref=e26] [cursor=pointer]:
+        - /url: "#/auth/register"
+    - generic [ref=e29]:
+      - heading "Account Created Successfully" [level=1] [ref=e30]
+      - button "Login" [ref=e31] [cursor=pointer]
+  - generic [ref=e32]:
+    - heading "Why People Choose Us?" [level=1] [ref=e35]
+    - generic [ref=e36]:
+      - generic [ref=e37]:
+        - generic [ref=e39]: 
+        - generic [ref=e40]:
+          - heading "3546540" [level=1]
+          - paragraph [ref=e41]: Successfull Orders
+      - generic [ref=e42]:
+        - generic [ref=e44]: 
+        - generic [ref=e45]:
+          - heading "37653" [level=1]
+          - paragraph [ref=e46]: Customers
+      - generic [ref=e47]:
+        - generic [ref=e49]: 
+        - generic [ref=e50]:
+          - heading "3243" [level=1]
+          - paragraph [ref=e51]: Sellers
+    - generic [ref=e52]:
+      - generic [ref=e53]:
+        - generic [ref=e55]: 
+        - generic [ref=e56]:
+          - heading "4500+" [level=1]
+          - paragraph [ref=e57]: Daily Orders
+      - generic [ref=e58]:
+        - generic [ref=e60]: 
+        - generic [ref=e61]:
+          - heading "500+" [level=1]
+          - paragraph [ref=e62]: Daily New Customer Joining
+```

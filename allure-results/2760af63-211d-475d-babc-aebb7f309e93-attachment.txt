@@ -1,0 +1,10 @@
+Registered Email: userlr25wja@gmail.com
+Registered Password: Es11k@wawa
+Logged in successfully with:
+Username:userlr25wja@gmail.com
+Password:Es11k@wawa
+Adidas Original has been added to cart
+Adidas Original is present in the cart
+Invalid coupon code message is displayed as expected.
+Coupon code entered correctly.
+Order Reference Number: 6994bb2a1fe6115f6a8ef702

@@ -1,0 +1,6 @@
+🔹 Created Order IDs: [
+  "6994bae11fe6115f6a8ef568"
+]
+🔹 Token (masked): eyJhbGciOi...
+🔹 Validating Order ID in UI: 6994bae11fe6115f6a8ef568
+✅ Happy path validation passed: order is visible in UI.

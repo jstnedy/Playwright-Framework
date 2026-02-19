@@ -1,0 +1,10 @@
+Registered Email: user34cjsby@gmail.com
+Registered Password: Es11k@wawa
+Logged in successfully with:
+Username:user34cjsby@gmail.com
+Password:Es11k@wawa
+Adidas Original has been added to cart
+Adidas Original is present in the cart
+Invalid coupon code message is displayed as expected.
+Coupon code entered correctly.
+Order Reference Number: 699429a71fe6115f6a8ccdf1

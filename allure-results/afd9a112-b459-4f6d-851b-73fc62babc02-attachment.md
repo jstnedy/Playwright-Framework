@@ -1,0 +1,61 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - navigation [ref=e5]:
+      - generic [ref=e7]:
+        - link "Automation Automation Practice":
+          - /url: ""
+          - generic [ref=e8] [cursor=pointer]:
+            - heading "Automation" [level=3] [ref=e9]
+            - paragraph [ref=e10]: Automation Practice
+      - text: 
+      - list [ref=e11]:
+        - listitem [ref=e12] [cursor=pointer]:
+          - button " HOME" [ref=e13]:
+            - generic [ref=e14]: 
+            - text: HOME
+        - listitem
+        - listitem [ref=e15] [cursor=pointer]:
+          - button " ORDERS" [ref=e16]:
+            - generic [ref=e17]: 
+            - text: ORDERS
+        - listitem [ref=e18] [cursor=pointer]:
+          - button " Cart" [ref=e19]:
+            - generic [ref=e20]: 
+            - text: Cart
+        - listitem [ref=e21] [cursor=pointer]:
+          - button "Sign Out" [ref=e22]:
+            - generic [ref=e23]: 
+            - text: Sign Out
+    - generic [ref=e24]:
+      - heading "Your Orders" [level=1] [ref=e25]
+      - table [ref=e26]:
+        - rowgroup [ref=e27]:
+          - row "Order Id Product Image Name Price Ordered Date View Delete" [ref=e28]:
+            - columnheader "Order Id" [ref=e29]
+            - columnheader "Product Image" [ref=e30]
+            - columnheader "Name" [ref=e31]
+            - columnheader "Price" [ref=e32]
+            - columnheader "Ordered Date" [ref=e33]
+            - columnheader "View" [ref=e34]
+            - columnheader "Delete" [ref=e35]
+        - rowgroup [ref=e36]:
+          - row "6995d5b71fe6115f6a91f54f ZARA COAT 3 $ 11500 Wed Feb 18 View Delete" [ref=e37]:
+            - rowheader "6995d5b71fe6115f6a91f54f" [ref=e38]
+            - cell [ref=e39]:
+              - img [ref=e40]
+            - cell "ZARA COAT 3" [ref=e41]
+            - cell "$ 11500" [ref=e42]
+            - cell "Wed Feb 18" [ref=e43]
+            - cell "View" [ref=e44]:
+              - button "View" [ref=e45] [cursor=pointer]
+            - cell "Delete" [ref=e46]:
+              - button "Delete" [ref=e47] [cursor=pointer]
+      - generic [ref=e48]: "* If orders Will be more than 7 your last order will get deleted"
+    - generic [ref=e50]:
+      - button "Go Back to Shop" [ref=e51] [cursor=pointer]
+      - button "Go Back to Cart" [ref=e52] [cursor=pointer]
+  - generic "Order Placed Successfully" [ref=e54]
+```
