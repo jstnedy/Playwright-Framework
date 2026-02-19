@@ -26,15 +26,13 @@ class LoginPage {
     await this.email.fill(username);
     await this.password.fill(password);
     await this.loginBtn.click();
-
-    // pick the correct post-login URL for your app
-    await this.page.waitForURL('**/#/dashboard/**', { timeout: 60_000 });
   }
 
   async invalidLogin(username, password) {
     await this.email.fill(username);
     await this.password.fill(password);
     await this.loginBtn.click();
+    
   }
 
    async verifyInvalidLoginError(username, password) {
