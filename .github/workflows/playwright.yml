@@ -10,7 +10,7 @@ on:
         default: regression
         type: choice
         options:
-          - all
+          - ALL
           - regression
           - webTests
           - apiValidTests

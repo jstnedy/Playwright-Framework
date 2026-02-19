@@ -9,7 +9,9 @@
     "apiValidTests": "npx playwright test --grep @APIvalid",
     "apiInvalidTests": "npx playwright test --grep @APIinvalid",
     "safariConfig": "npx playwright test --config playwright.config1.js --project=safari",
-    "CucumberRegression": "npx cucumber-js --tags @Regression --retry 1"
+    "CucumberRegression": "npx cucumber-js --tags @Regression --retry 1",
+    "ALL": "npm run regression && npm run CucumberRegression"
+
   },
   "license": "ISC",
   "type": "commonjs",
