@@ -10,7 +10,7 @@ on:
       suite:
         description: "Which test suite to run"
         required: true
-        default: regression
+        default: all
         type: choice
         options:
           - regression
