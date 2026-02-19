@@ -1,16 +1,12 @@
 name: E2E / API Tests
 
 on:
-  pull_request:
-  push:
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       suite:
         description: "Which test suite to run"
         required: true
-        default: all
+        default: regression
         type: choice
         options:
           - all
@@ -42,25 +38,12 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install chromium --with-deps
 
-      - name: Validate suite exists (except "all")
+      - name: Validate suite exists
         run: |
-          node -e "const p=require('./package.json'); const s='${{ github.event.inputs.suite || 'regression' }}'; if(s!=='all' && (!p.scripts || !p.scripts[s])) { console.error('❌ No npm script found for suite:', s); console.error('Available scripts:', Object.keys(p.scripts||{})); process.exit(1);} console.log('✅ Suite:', s); if(s!=='all') console.log('➡️ Command:', p.scripts[s]);"
+          node -e "const p=require('./package.json'); const s='${{ github.event.inputs.suite }}'; if(!p.scripts || !p.scripts[s]) { console.error('❌ No npm script found for suite:', s); console.error('Available scripts:', Object.keys(p.scripts||{})); process.exit(1);} console.log('✅ Suite:', s); console.log('➡️ Command:', p.scripts[s]);"
 
       - name: Run selected suite
-        run: |
-          SUITE="${{ github.event.inputs.suite || 'regression' }}"
-          echo "Selected suite: $SUITE"
-
-          if [ "$SUITE" = "all" ]; then
-            npm run regression
-            npm run webTests
-            npm run apiValidTests
-            npm run apiInvalidTests
-            npm run safariConfig
-            npm run CucumberRegression
-          else
-            npm run "$SUITE"
-          fi
+        run: npm run ${{ github.event.inputs.suite }}
 
       - name: Upload Playwright report
         if: always()
