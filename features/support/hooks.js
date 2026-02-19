@@ -3,7 +3,7 @@ const { chromium } = require('@playwright/test');
 const { PageObjectManager } = require('../../pageObjects/PageObjectManager');
 
 Before(async function () {
-  this.browser = await chromium.launch({ headless: false });
+  this.browser = await chromium.launch({ headless: !!process.env.CI });
   this.context = await this.browser.newContext();
   this.page = await this.context.newPage();
 
