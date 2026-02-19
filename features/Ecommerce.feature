@@ -10,7 +10,7 @@ Feature: Ecommerce Validations
     When I place the order with valid details
     Then the order should appear in order history
   
-  @Regression
+
   @existingUser
   Scenario: Place order with existing user
     Given I log in with username "justine.agner1@gmail.com" and password "es11kawa"
@@ -19,7 +19,7 @@ Feature: Ecommerce Validations
     When I place the order with valid details
     Then the order should appear in order history
 
-  @Regression
+
   @Validation
   @nonExistingUser1
   Scenario Outline: Place order with non-existing user
