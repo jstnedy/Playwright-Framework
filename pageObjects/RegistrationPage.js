@@ -1,3 +1,5 @@
+const registrationData = require('../test-data/RegistrationTestData.json');
+
 class RegistrationPage {
     constructor(page)
     {
@@ -26,13 +28,15 @@ async goToRegistration() {
 
    
 async validRegistration() {
+  
+  registrationData.validRegistration; // Access the valid registration data from the JSON file
   const registeredUsername = `user${Math.random().toString(36).slice(2, 9)}@gmail.com`;
   const registeredPassword = "Es11k@wawa";
 
-  await this.firstName.fill("rahul");
-  await this.lastName.fill("shetty");
+  await this.firstName.fill(registrationData.validRegistration.firstName);
+  await this.lastName.fill(registrationData.validRegistration.lastName);
   await this.email.fill(registeredUsername);
-  await this.phoneNumber.fill("9876543210");
+  await this.phoneNumber.fill(registrationData.validRegistration.phoneNumber);
   await this.password.fill(registeredPassword);
   await this.confirmPassword.fill(registeredPassword);
 

@@ -1,0 +1,7 @@
+{
+  "validRegistration": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "phoneNumber": "9876543210"
+  }
+}
