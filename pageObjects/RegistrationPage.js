@@ -1,10 +1,8 @@
 const registrationData = require('../test-data/RegistrationTestData.json');
 
 class RegistrationPage {
-    constructor(page)
-    {
+    constructor(page) {
         this.page = page;
-        // this.registerLink = page.locator(".text-reset");
         this.firstName = page.getByPlaceholder('First Name');
         this.lastName = page.locator("#lastName");
         this.email = page.locator("#userEmail");
@@ -14,45 +12,65 @@ class RegistrationPage {
         this.checkBox = page.locator(".col-md-1");
         this.registerBtn = page.locator("#login");
         this.accountCreatedLoginBUtton = page.locator("[class='btn btn-primary']");
+        this.registrationUrl = "https://rahulshettyacademy.com/client/#/auth/register";
     }
 
-async goToRegistration() {
-  await this.page.goto("https://rahulshettyacademy.com/client/#/auth/register", {
-    waitUntil: "domcontentloaded",
-    timeout: 60_000,
-    });
-     // Register page is “ready” when a key field is visible
-  await this.email.waitFor({ state: "visible", timeout: 60_000 });
-}
+    async goToRegistration() {
+        await this.page.goto(this.registrationUrl, {
+            waitUntil: "domcontentloaded",
+            timeout: 60_000,
+        });
+        await this.email.waitFor({ state: "visible", timeout: 60_000 });
+    }
 
 
    
-async validRegistration() {
-  
-  registrationData.validRegistration; // Access the valid registration data from the JSON file
-  const registeredUsername = `user${Math.random().toString(36).slice(2, 9)}@gmail.com`;
-  const registeredPassword = "Es11k@wawa";
+    async fillRegistrationForm(firstName, lastName, email, phoneNumber, password, confirmPassword) {
+        await this.firstName.fill(firstName);
+        await this.lastName.fill(lastName);
+        await this.email.fill(email);
+        await this.phoneNumber.fill(phoneNumber);
+        await this.password.fill(password);
+        await this.confirmPassword.fill(confirmPassword);
+    }
 
-  await this.firstName.fill(registrationData.validRegistration.firstName);
-  await this.lastName.fill(registrationData.validRegistration.lastName);
-  await this.email.fill(registeredUsername);
-  await this.phoneNumber.fill(registrationData.validRegistration.phoneNumber);
-  await this.password.fill(registeredPassword);
-  await this.confirmPassword.fill(registeredPassword);
+    async agreeToTerms() {
+        try {
+            await this.checkBox.check();
+        } catch {
+            await this.checkBox.click();
+        }
+    }
 
-  await this.checkBox.check?.().catch(async () => {
-    // if it's not a checkbox input but a label/div, fallback:
-    await this.checkBox.click();
-  });
+    async submitRegistration() {
+        await this.registerBtn.click();
+        await this.accountCreatedLoginBUtton.click();
+    }
 
-  await this.registerBtn.click();
-  await this.accountCreatedLoginBUtton.click();
+    generateUniqueEmail() {
+        return `user${Math.random().toString(36).slice(2, 9)}@gmail.com`;
+    }
 
-  console.log("Registered Email:", registeredUsername);
-  console.log("Registered Password:", registeredPassword);
+    async validRegistration(customData = null) {
+        const data = customData || registrationData.validRegistration;
+        const registeredUsername = this.generateUniqueEmail();
+        const registeredPassword = "Es11k@wawa";
 
-  return { registeredUsername, registeredPassword };
+        await this.fillRegistrationForm(
+            data.firstName,
+            data.lastName,
+            registeredUsername,
+            data.phoneNumber,
+            registeredPassword,
+            registeredPassword
+        );
+
+        await this.agreeToTerms();
+        await this.submitRegistration();
+
+        console.log(`✓ Registration successful - Email: ${registeredUsername}`);
+        return { registeredUsername, registeredPassword };
+    }
 }
-}
 
-module.exports = {RegistrationPage}
+module.exports = { RegistrationPage };

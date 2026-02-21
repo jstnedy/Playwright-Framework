@@ -1,30 +1,49 @@
 const { expect } = require('@playwright/test');
 
-class OrderHistoryPage{
-    constructor(page){
-        this.page = page; // ✅ FIXED
-
-        // Orders
+class OrderHistoryPage {
+    constructor(page) {
+        this.page = page;
         this.orderHistoryPage = page.locator("//label[@routerlink='/dashboard/myorders']");
         this.orderReferenceNumber = page.locator("//tr[@class='ng-star-inserted']");
         this.orderReferenceID = page.locator("tbody th[scope='row']");
-
-        
     }
 
-async orderHistoryVerification(orderRefNumber) {
-  await this.orderHistoryPage.click();
+    async navigateToOrderHistory() {
+        await this.orderHistoryPage.click();
+    }
 
-  const order = this.orderReferenceID
-    .filter({ hasText: orderRefNumber.trim() })
-    .first();
+    async getOrderCount() {
+        return await this.orderReferenceID.count();
+    }
 
-  const actualText = (await order.textContent())?.trim();
+    findOrderByReferenceNumber(orderRefNumber) {
+        const trimmedRefNumber = orderRefNumber.trim();
+        const order = this.orderReferenceID
+            .filter({ hasText: trimmedRefNumber })
+            .first();
+        
+        return order;
+    }
 
-  console.log("Expected:", orderRefNumber.trim());
-  console.log("Actual:", actualText);
+    async verifyOrderExists(orderRefNumber) {
+        const actualText = (await this.findOrderByReferenceNumber(orderRefNumber).textContent())?.trim();
+        
+        if (!actualText) {
+            throw new Error(`Order with reference "${orderRefNumber}" not found`);
+        }
+        
+        return actualText;
+    }
 
-  expect(actualText).toBe(orderRefNumber.trim());
+    async orderHistoryVerification(orderRefNumber) {
+        await this.navigateToOrderHistory();
+        
+        const expectedRef = orderRefNumber.trim();
+        const actualText = await this.verifyOrderExists(expectedRef);
+        
+        console.log(`✓ Order verification - Expected: ${expectedRef}, Actual: ${actualText}`);
+        expect(actualText).toBe(expectedRef);
+    }
 }
-}
-module.exports = {OrderHistoryPage};
+
+module.exports = { OrderHistoryPage };
