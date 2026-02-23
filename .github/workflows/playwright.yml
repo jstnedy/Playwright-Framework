@@ -16,6 +16,7 @@ on:
           - apiValidTests
           - apiInvalidTests
           - safariConfig
+          - automationExerciseSignupLogin
           - CucumberRegression
 
 jobs:
