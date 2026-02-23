@@ -3,6 +3,7 @@ const { RegistrationPage } = require('../pageObjects/RegistrationPage');
 const { DashboardPage } = require('../pageObjects/DashboardPage');
 const { CheckoutPage } = require('../pageObjects/CheckOutPage');
 const { OrderHistoryPage } = require('../pageObjects/OrdersHistoryPage');
+const { AutomationExerciseAuthPage } = require('../pageObjects/AutomationExerciseAuthPage');
 
 class PageObjectManager {
     constructor(page) {
@@ -12,6 +13,7 @@ class PageObjectManager {
         this._dashboardPage = null;
         this._checkOutPage = null;
         this._ordersHistoryPage = null;
+        this._automationExerciseAuthPage = null;
     }
 
     get registrationPage() {
@@ -49,6 +51,13 @@ class PageObjectManager {
         return this._ordersHistoryPage;
     }
 
+    get automationExerciseAuthPage() {
+        if (!this._automationExerciseAuthPage) {
+            this._automationExerciseAuthPage = new AutomationExerciseAuthPage(this.page);
+        }
+        return this._automationExerciseAuthPage;
+    }
+
     // Legacy getter methods for backwards compatibility
     getRegistrationPage() {
         return this.registrationPage;
@@ -68,6 +77,10 @@ class PageObjectManager {
 
     getOrdersHistoryPage() {
         return this.ordersHistoryPage;
+    }
+
+    getAutomationExerciseAuthPage() {
+        return this.automationExerciseAuthPage;
     }
 }
 
