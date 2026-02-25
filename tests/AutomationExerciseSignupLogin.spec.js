@@ -1,10 +1,9 @@
 const { test } = require('@playwright/test');
-const { PageObjectManager } = require('../pageObjects/PageObjectManager');
+const { AutomationExerciseAuthPage } = require('../pageObjects/AutomationExerciseAuthPage');
 
 test.describe('Automation Exercise Signup and Login', () => {
     test('@Web should signup a new user, logout, and login again successfully', async ({ page }) => {
-        const pageObjectManager = new PageObjectManager(page);
-        const authPage = pageObjectManager.automationExerciseAuthPage;
+        const authPage = new AutomationExerciseAuthPage(page);
 
         const uniqueStamp = Date.now();
         const user = {

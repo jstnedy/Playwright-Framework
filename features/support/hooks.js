@@ -1,6 +1,10 @@
 const { Before, After, BeforeStep, AfterStep } = require('@cucumber/cucumber');
 const { chromium } = require('@playwright/test');
-const { PageObjectManager } = require('../../pageObjects/PageObjectManager');
+const { RegistrationPage } = require('../../pageObjects/RegistrationPage');
+const { LoginPage } = require('../../pageObjects/LoginPage');
+const { DashboardPage } = require('../../pageObjects/DashboardPage');
+const { CheckoutPage } = require('../../pageObjects/CheckOutPage');
+const { OrderHistoryPage } = require('../../pageObjects/OrdersHistoryPage');
 
 Before(async function () {
   this.browser = await chromium.launch({ headless: !!process.env.CI });
@@ -10,7 +14,13 @@ Before(async function () {
   this.page.setDefaultTimeout(60_000);
   this.page.setDefaultNavigationTimeout(60_000);
 
-  this.pageObjectManager = new PageObjectManager(this.page);
+  this.pages = {
+    registrationPage: new RegistrationPage(this.page),
+    loginPage: new LoginPage(this.page),
+    dashboardPage: new DashboardPage(this.page),
+    checkOutPage: new CheckoutPage(this.page),
+    orderHistoryPage: new OrderHistoryPage(this.page)
+  };
 });
 
 After(async function () {

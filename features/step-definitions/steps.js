@@ -8,8 +8,7 @@ setDefaultTimeout(90 * 1000);
 // Scenario 1: REGISTER + LOGIN
 // ------------------------------
 Given('I register a new user and log in', async function () {
-  const registrationPage = this.pageObjectManager.getRegistrationPage();
-  const loginPage = this.pageObjectManager.getLoginPage();
+  const { registrationPage, loginPage } = this.pages;
 
   await registrationPage.goToRegistration();
   const regData = await registrationPage.validRegistration();
@@ -22,7 +21,7 @@ Given('I register a new user and log in', async function () {
 // Scenario 2: LOGIN ONLY
 // ------------------------------
 Given('I log in with username {string} and password {string}', async function (username, password) {
-  const loginPage = this.pageObjectManager.getLoginPage();
+  const { loginPage } = this.pages;
 
   await loginPage.goToLogin();
   await loginPage.validLogin(username, password);
@@ -35,29 +34,29 @@ When('I add the item {string} to the cart', async function (productName) {
   const finalName = (productName || '').trim() || testDataForOrder.productName1;
   this.productName = finalName;
 
-  const dashboardPage = this.pageObjectManager.getDashboardPage();
+  const { dashboardPage } = this.pages;
   await dashboardPage.addItemToCart(finalName);
 });
 
 Then('the item {string} should be in the cart', async function (itemName) {
   const finalItem = (itemName || '').trim() || this.productName;
 
-  const dashboardPage = this.pageObjectManager.getDashboardPage();
+  const { dashboardPage } = this.pages;
   await dashboardPage.verifyItemAddedToCart(finalItem);
 });
 
 When('I place the order with valid details', async function () {
-  const checkOutPage = this.pageObjectManager.getCheckOutPage();
+  const { checkOutPage } = this.pages;
   this.orderRefNumber = await checkOutPage.checkOutItem();
 });
 
 Then('the order should appear in order history', async function () {
-  const orderHistoryPage = this.pageObjectManager.getOrdersHistoryPage();
+  const { orderHistoryPage } = this.pages;
   await orderHistoryPage.orderHistoryVerification(this.orderRefNumber);
 });
 
 Given('I log in with invalid username {string} and password {string}', async function (username, password) {
-  const loginPage = this.pageObjectManager.getLoginPage();
+  const { loginPage } = this.pages;
 
   await loginPage.goToLogin();
   await loginPage.invalidLogin(username, password);
@@ -65,6 +64,6 @@ Given('I log in with invalid username {string} and password {string}', async fun
 
 
 Then('I should see an error message indicating invalid login', async function () {
-  const loginPage = this.pageObjectManager.getLoginPage();
+  const { loginPage } = this.pages;
   await loginPage.verifyInvalidLoginError();
 });

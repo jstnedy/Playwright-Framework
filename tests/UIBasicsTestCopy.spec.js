@@ -1,22 +1,26 @@
-const { PageObjectManager } = require('../pageObjects/PageObjectManager');
 const { test } = require('@playwright/test');
 const { customTest } = require('../test-data/test-base');
 const products = require('../test-data/Products-all.json');
+const { RegistrationPage } = require('../pageObjects/RegistrationPage');
+const { LoginPage } = require('../pageObjects/LoginPage');
+const { DashboardPage } = require('../pageObjects/DashboardPage');
+const { CheckoutPage } = require('../pageObjects/CheckOutPage');
+const { OrderHistoryPage } = require('../pageObjects/OrdersHistoryPage');
 
 test.describe.configure({ mode: 'parallel' });
 
 /**
- * Initializes all page objects from the PageObjectManager
- * @param {PageObjectManager} manager - Page object manager instance
+ * Initializes all page objects from a Playwright page instance
+ * @param {import('@playwright/test').Page} page - Page instance
  * @returns {Object} Object containing all page object instances
  */
-function initializePageObjects(manager) {
+function initializePageObjects(page) {
     return {
-        registrationPage: manager.getRegistrationPage(),
-        loginPage: manager.getLoginPage(),
-        dashboardPage: manager.getDashboardPage(),
-        checkOutPage: manager.getCheckOutPage(),
-        orderHistoryPage: manager.getOrdersHistoryPage()
+        registrationPage: new RegistrationPage(page),
+        loginPage: new LoginPage(page),
+        dashboardPage: new DashboardPage(page),
+        checkOutPage: new CheckoutPage(page),
+        orderHistoryPage: new OrderHistoryPage(page)
     };
 }
 
@@ -45,8 +49,7 @@ async function executeCompleteCheckoutFlow(pageObjects, productName) {
 // 1. Data Driven Tests (run ALL products)
 for (const data of products) {
     test(`@Web Complete Flow - ${data.productName}`, async ({ page }) => {
-        const pageObjectManager = new PageObjectManager(page);
-        const pageObjects = initializePageObjects(pageObjectManager);
+        const pageObjects = initializePageObjects(page);
         
         await executeCompleteCheckoutFlow(pageObjects, data.productName);
     });
@@ -54,8 +57,7 @@ for (const data of products) {
 
 // 2. Fixture-based Test (run ONE specific product from fixture)
 customTest(`@Web Complete Flow using Fixture - Specific Product`, async ({ page, testDataForOrder }) => {
-    const pageObjectManager = new PageObjectManager(page);
-    const pageObjects = initializePageObjects(pageObjectManager);
+    const pageObjects = initializePageObjects(page);
     
     await executeCompleteCheckoutFlow(pageObjects, testDataForOrder.productName1);
 });
